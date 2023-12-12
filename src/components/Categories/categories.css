@@ -1,0 +1,11 @@
+.categories{
+    display: flex  !important;
+    justify-content: space-between;
+    color: black;
+}
+
+div button{
+    border-radius: 5px;
+    color: black;
+    background-color: green;
+}
