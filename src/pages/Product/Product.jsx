@@ -3,13 +3,15 @@ import axios from 'axios'
 import './product.css'
 import Card from '../../components/Card/Card'
 import Categories from '../../components/Categories/Categories'
+import apiUrl from '../../utility/api'
+
 const Product = () => {
     const [items, setItems] = useState([])
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
         const getProducts = async () => {
-            await axios.get('https://fakestoreapi.com/products')
+            await axios.get(`${apiUrl.productApi}`)
                 .then(response => setItems(response.data))
         }
 
@@ -33,7 +35,7 @@ const Product = () => {
             {
                 categories&& categories.map(cat=>{
                     return(
-                        <Categories sort={cat} />
+                        <Categories key={categories.id} sort={cat} />
                     )
                 })
             }
@@ -45,7 +47,7 @@ const Product = () => {
                 {
                     items && items.map(item => {
                         return (
-                            <Card data={item} />
+                            <Card key={item.id} data={item} />
                         )
                     })
                 }
